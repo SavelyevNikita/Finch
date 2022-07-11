@@ -1,0 +1,22 @@
+.lbl_checked {
+  text-decoration: solid;
+  background-color: #4e4caf;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 25px;
+}
+.lbl_unChecked {
+  border-radius: 25px;
+  text-decoration: none;
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+}

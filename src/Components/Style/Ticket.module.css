@@ -1,0 +1,20 @@
+.ticket {
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: 18px 14px;
+  transition: border-color 200ms ease-in-out 0s, box-shadow 200ms ease-in-out 0s;
+  border: 2px solid rgb(255, 205, 23);
+}
+.firtst_part {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid rgb(16, 177, 88);
+  border-radius: 20px;
+}
+.second_part {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid rgb(13, 15, 177);
+  border-radius: 20px;
+}
