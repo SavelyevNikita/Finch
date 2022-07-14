@@ -135,18 +135,6 @@ export const ArrayOfAuxButton: TButton[] = [
     checked: false,
     type: 'short',
   },
-  {
-    digit: 3,
-    id: '3cshort',
-    checked: false,
-    type: 'short',
-  },
-  {
-    digit: 4,
-    id: '4dshort',
-    checked: false,
-    type: 'short',
-  },
 ];
 
 const initialTiketState = {
