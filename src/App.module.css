@@ -1,4 +1,8 @@
 .field {
-  width: 1280px;
   margin: 0 auto;
+  height: 368px;
+  width: 296px;
+  left: 0px;
+  top: 0px;
+  border-radius: 3px;
 }

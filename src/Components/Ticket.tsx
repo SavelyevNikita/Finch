@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import T from '../Components/Style/Ticket.module.css';
 import { TButton } from './ArrayTemp';
 import { Button } from './Button';
-import { checkResult } from './Store/Slice';
+import { checkResult, makeRandomArray } from './Store/Slice';
 import { AppDispatch, RootState } from './Store/Store';
 
 export const Ticket: React.FC = () => {
@@ -52,7 +52,9 @@ export const Ticket: React.FC = () => {
           className={T.submit_button}
           type={'button'}
           onClick={() => {
+            dispatch(makeRandomArray('check'));
             dispatch(checkResult('check'));
+            // dispatch(resetResult('reset'));
           }}
           value="Показать результат"
         />

@@ -6,6 +6,11 @@ type TInitialState = {
   countCheckedDigits: number;
   checkedAuxDigits: TButton[];
   countcCeckedAuxDigits: number;
+  bigFieldRandomArray: number[];
+  smallFieldRandomArray: number;
+  resultBigFieldArray: number[];
+  resultSmallFieldArray: number[];
+  overlay: string;
 };
 
 const initialState: TInitialState = {
@@ -13,6 +18,11 @@ const initialState: TInitialState = {
   checkedAuxDigits: ArrayOfAuxButton,
   countCheckedDigits: 0,
   countcCeckedAuxDigits: 0,
+  smallFieldRandomArray: 0,
+  bigFieldRandomArray: [],
+  resultBigFieldArray: [],
+  resultSmallFieldArray: [],
+  overlay: 'game',
 };
 
 const buttonSlice = createSlice({
@@ -51,21 +61,41 @@ const buttonSlice = createSlice({
       });
       state.countcCeckedAuxDigits = countcCeckedAuxDigits;
     },
-    checkResult(state, action) {
+    makeRandomArray(state, action) {
       const bigFieldRandomArray = new Set();
       while (bigFieldRandomArray.size < 4) {
         bigFieldRandomArray.add(Math.floor(Math.random() * 19) + 1);
       }
       const smallFieldRandomArray: number = Math.floor(Math.random() * 2) + 1;
-      console.log(bigFieldRandomArray);
-      console.log(smallFieldRandomArray);
-      const smallFieldResult = state.checkedAuxDigits.find((item) => {
-        return item.digit === smallFieldRandomArray;
+      state.bigFieldRandomArray = Array.from(bigFieldRandomArray) as number[];
+      state.smallFieldRandomArray = smallFieldRandomArray;
+    },
+    resetResult(state, action) {
+      state.resultBigFieldArray = [];
+      state.resultSmallFieldArray = [];
+      state.bigFieldRandomArray = [];
+      state.smallFieldRandomArray = 0;
+      state.countCheckedDigits = 0;
+      state.countcCeckedAuxDigits = 0;
+      state.checkedDigits = ArrayOfButton;
+      state.checkedAuxDigits = ArrayOfAuxButton;
+      state.overlay = 'game';
+    },
+    checkResult(state, action) {
+      state.checkedDigits.forEach((item) => {
+        if (item.checked && state.bigFieldRandomArray.includes(item.digit)) {
+          state.resultBigFieldArray.push(item.digit);
+        }
       });
-      console.log(smallFieldResult ? true : false);
+      state.checkedAuxDigits.forEach((item) => {
+        if (item.checked && state.smallFieldRandomArray === item.digit) {
+          state.resultSmallFieldArray.push(item.digit);
+        }
+      });
+      state.overlay = 'result';
     },
   },
 });
 
 export default buttonSlice.reducer;
-export const { setDigit, checkResult } = buttonSlice.actions;
+export const { setDigit, makeRandomArray, checkResult, resetResult } = buttonSlice.actions;
